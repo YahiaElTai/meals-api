@@ -44,12 +44,12 @@ app.get("/api/meals", async (req, res) => {
   res.send(mealsWithPrices);
 });
 
-app.get("/api/meals/:id", (req, res) => {
-  const { id } = req.body;
+app.get("/api/meals/:id", async (req, res) => {
+  const meal = await axios.get(
+    `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${req.params.id}`
+  );
 
-  const meal = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${req.body.id}`);
-
-  res.send(meal)
+  res.send(meal.data.meals[0]);
 });
 
 app.listen(3000, () => {
