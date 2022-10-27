@@ -44,6 +44,14 @@ app.get("/api/meals", async (req, res) => {
   res.send(mealsWithPrices);
 });
 
+app.get("/api/meals/:id", (req, res) => {
+  const { id } = req.body;
+
+  const meal = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${req.body.id}`);
+
+  res.send(meal)
+});
+
 app.listen(3000, () => {
   console.log("Listening on port 3000!");
 });
