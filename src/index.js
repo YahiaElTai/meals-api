@@ -26,7 +26,6 @@ const API_URL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=";
 
 app.get("/api/meals", async (req, res) => {
   const breakfast = await axios.get(`${API_URL}Breakfast`);
-  const dessert = await axios.get(`${API_URL}Dessert`);
   const vegetarian = await axios.get(`${API_URL}Vegetarian`);
   const vegan = await axios.get(`${API_URL}Vegan`);
 
