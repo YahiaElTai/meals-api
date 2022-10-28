@@ -30,9 +30,12 @@ app.get("/api/meals", async (req, res) => {
   const vegan = await axios.get(`${API_URL}Vegan`);
 
   const allMeals = [
-    ...breakfast.data.meals,
-    ...vegetarian.data.meals,
-    ...vegan.data.meals,
+    ...breakfast.data.meals.map((meal) => ({ ...meal, category: "Breakfast" })),
+    ...vegetarian.data.meals.map((meal) => ({
+      ...meal,
+      category: "Vegetarian",
+    })),
+    ...vegan.data.meals.map((meal) => ({ ...meal, category: "Vegan" })),
   ];
 
   const mealsWithPrices = allMeals.map((meal) => ({
