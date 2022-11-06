@@ -24,6 +24,10 @@ const prices = [
 
 const API_URL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=";
 
+app.get("/", (req, res) => {
+  res.send({ message: "Hi, I am the API." });
+});
+
 app.get("/api/meals", async (req, res) => {
   const breakfast = await axios.get(`${API_URL}Breakfast`);
   const vegetarian = await axios.get(`${API_URL}Vegetarian`);
