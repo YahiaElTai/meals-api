@@ -58,6 +58,9 @@ app.get("/api/meals/:id", async (req, res) => {
   res.send(meal.data.meals[0]);
 });
 
-app.listen(3000, () => {
-  console.log("Listening on port 3000!");
+// eslint-disable-next-line no-undef
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}!`);
 });
